@@ -1,1 +1,4 @@
+from generate import Generate
+g1 = Generate
 
+print(g1.build_key())
