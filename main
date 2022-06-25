@@ -18,6 +18,11 @@ def gen_clue():
         A[row_index, column_index] = random.randint(1, 9)
     return A
 
+clue = gen_clue()
+valid = s1.check_clue(clue)
+while not valid:
+    clue = gen_clue()
+    valid = s1.check_clue(clue)
 
-print(f'Puzzle to solve:\n{gen_clue()}\nIs it solvable?')
-print(s1.check_clue(gen_clue()))
+print(f'Puzzle to solve:\n{clue}')
+print(f'Puzzle solved: {valid}')
