@@ -18,9 +18,11 @@ class Solve:
         """
         Uses backtracking method to check every possible element in each index
         until a valid solution for the whole matrix is found
-        :param puzzle: unique puzzle with only 26 elements in the matrix (in need of 81 total)
+        :param puzzle: unique puzzle with only 26 elements in the matrix 
+        (in need of 81 total)
         :return: boolean signifying if there is a valid solution
         """
+
 
         # Find next empty cell
         for row in range(9):
@@ -29,11 +31,14 @@ class Solve:
                 # iterates through matrix column
                 if puzzle[row, col] == 0:
                     for element in range(1, 10):
-                        # Check that this value has not already been used on this row
+                        # Check that this value has not already been used on
+                        # this row
                         if element not in puzzle[row]:
-                            # Check that this value has not already been used on this column
+                            # Check that this value has not already been used on
+                            # this column
                             if element not in puzzle[:, col]:
-                                # Identify which of the 9 squares we are working on
+                                # Identify which of the 9 squares we are working
+                                # on
                                 square = []
                                 if row < 3:
                                     if col < 3:
@@ -56,14 +61,16 @@ class Solve:
                                         square[:2] = puzzle[6:9, 3:6]
                                     else:
                                         square[:2] = puzzle[6:9, 6:9]
-                                # Check that this value has not already been used on this 3x3 square
+                                # Check that this value has not already been
+                                # used on this 3x3 square
                                 if element not in square[0]:
                                     if element not in square[1]:
                                         if element not in square[2]:
                                             puzzle[row, col] = element
                                             if self.full_grid(puzzle):
-                                                return "Yes!"
+                                                return puzzle
                                             elif self.check_clue(puzzle):
-                                                return True
+                                                return puzzle
                                             else:
-                                                print("No.")
+                                                return False
+
