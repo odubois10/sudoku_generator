@@ -1,4 +1,23 @@
-from generate import Generate
-g1 = Generate
+import random
+import numpy as np
+from solve import Solve
+s1 = Solve()
 
-print(g1.build_key())
+
+def gen_clue():
+    """
+    Randomly generates a matrix with some elements filled for a unique sudoku
+    puzzle possibility
+    :return: The random matrix
+    """
+
+    A = np.zeros((9, 9))
+    for element in range(26):
+        row_index = random.randint(0, 8)
+        column_index = random.randint(0, 8)
+        A[row_index, column_index] = random.randint(1, 9)
+    return A
+
+
+print(f'Puzzle to solve:\n{gen_clue()}\nIs it solvable?')
+print(s1.check_clue(gen_clue()))
